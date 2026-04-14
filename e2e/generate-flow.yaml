@@ -1,0 +1,30 @@
+appId: com.qrtoolkit.app.dev
+---
+# Тестовый сценарий: генерация QR-кода → сохранение в историю
+
+- launchApp
+
+# Переходим на экран генератора
+- tapOn: "Генератор"
+
+# Проверяем селектор типов
+- assertVisible: "Ссылка"
+- assertVisible: "Текст"
+- assertVisible: "Wi-Fi"
+
+# Вводим URL
+- tapOn: "Ссылка"
+- tapOn:
+    id: "url-input"
+- inputText: "https://example.com"
+
+# Генерируем QR-код
+- tapOn: "Создать QR-код"
+
+# Проверяем появление кнопок экспорта
+- assertVisible: "Сохранить в галерею"
+- assertVisible: "Поделиться"
+
+# Переходим в историю и проверяем запись
+- tapOn: "История"
+- assertVisible: "https://example.com"
